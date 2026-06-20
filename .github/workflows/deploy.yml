@@ -35,17 +35,9 @@ jobs:
           # Create a deployment directory
           mkdir -p _site
           
-          # Copy only the approved files and scripts for the customer portal
+          # Copy only the approved files and scripts for the customer portal demo
           cp login.html _site/
           cp dashboard.html _site/
-          cp screening-setup.html _site/
-          cp bulk-screening.html _site/
-          cp ongoing-monitoring.html _site/
-          cp case-management.html _site/
-          cp profile-manager.html _site/
-          cp reports.html _site/
-          cp search-results.html _site/
-          cp match-profiler.html _site/
           cp shell.js _site/
           
           # Copy logo assets if the folder exists

@@ -11,21 +11,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentPath = window.location.pathname;
   const pageName = currentPath.split("/").pop() || "dashboard.html";
 
+  const isGitHubPages = window.location.hostname.includes("github.io");
+
   // Navigation Items Definitions
   const customerNavItems = [
     { name: "Dashboard", url: "dashboard.html", icon: "layout-dashboard" },
-    { name: "Name Screening", url: "screening-setup.html", icon: "search" },
+    { name: "Name Screening", url: "screening-setup.html", icon: "search", disabled: isGitHubPages },
     { 
       name: "Bulk & Monitoring", 
       icon: "layers",
       subItems: [
-        { name: "Bulk Screening", url: "bulk-screening.html", icon: "files" },
-        { name: "Ongoing Monitoring", url: "ongoing-monitoring.html", icon: "activity", showLock: true }
+        { name: "Bulk Screening", url: "bulk-screening.html", icon: "files", disabled: isGitHubPages },
+        { name: "Ongoing Monitoring", url: "ongoing-monitoring.html", icon: "activity", showLock: true, disabled: isGitHubPages }
       ]
     },
-    { name: "Case Manager", url: "case-management.html", icon: "shield-alert" },
-    { name: "Profile Manager", url: "profile-manager.html", icon: "users" },
-    { name: "Reports", url: "reports.html", icon: "bar-chart-3" }
+    { name: "Case Manager", url: "case-management.html", icon: "shield-alert", disabled: isGitHubPages },
+    { name: "Profile Manager", url: "profile-manager.html", icon: "users", disabled: isGitHubPages },
+    { name: "Reports", url: "reports.html", icon: "bar-chart-3", disabled: isGitHubPages }
   ];
 
   const activeNavItems = customerNavItems;
@@ -59,12 +61,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 const isSubActive = pageName === sub.url || (pageName + window.location.search) === sub.url;
                 const subLinkClass = isSubActive
                   ? "flex items-center gap-3 px-3 py-2 rounded-md text-white bg-[#0a466b] font-medium transition-colors"
-                  : "flex items-center gap-3 px-3 py-2 rounded-md text-[#b3c5d0] hover:text-white hover:bg-[#063352] transition-colors";
+                  : "flex items-center gap-3 px-3 py-2 rounded-md text-[#b3c5d0] hover:text-white hover:bg-[#063352] transition-colors" + (sub.disabled ? " opacity-50 cursor-not-allowed pointer-events-none" : "");
                 return `
-                  <a href="${sub.url}" class="${subLinkClass} group relative">
+                  <a href="${sub.disabled ? '#' : sub.url}" class="${subLinkClass} group relative">
                     <i data-lucide="${sub.icon || 'circle'}" class="w-4 h-4 ${isSubActive ? 'text-teal' : 'text-[#8ba2b1] group-hover:text-white'}"></i>
                     <span class="text-xs">${sub.name}</span>
-                    ${sub.showLock ? '<i data-lucide="lock" class="w-3 h-3 absolute right-3 text-[#5b7383]"></i>' : ''}
+                    ${(sub.showLock || sub.disabled) ? '<i data-lucide="lock" class="w-3 h-3 absolute right-3 text-[#5b7383]"></i>' : ''}
                   </a>
                 `;
               }).join('')}
@@ -81,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <a href="${item.disabled ? '#' : item.url}" class="${linkClass} group relative">
             <i data-lucide="${item.icon}" class="w-5 h-5 ${isActive ? 'text-teal' : 'text-[#8ba2b1] group-hover:text-white'}"></i>
             <span class="text-sm">${item.name}</span>
+            ${item.disabled ? '<i data-lucide="lock" class="w-3 h-3 absolute right-3 text-[#5b7383]"></i>' : ''}
           </a>
         `;
       }
