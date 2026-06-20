@@ -96,10 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div>
         <!-- Brand Header -->
         <div class="h-16 flex items-center px-6 border-b border-[#0f4e75]">
-          <span class="text-white font-semibold text-lg tracking-[-0.5px] flex items-center gap-2">
-            <span class="w-3 h-3 bg-teal rounded-full animate-pulse"></span>
-            H-INTELLIGENCE
-          </span>
+          <img src="logo/hh-logo-white.svg" alt="H-Intelligence" class="h-10 w-auto">
         </div>
 
         <!-- Nav Links -->
