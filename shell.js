@@ -76,14 +76,17 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         const isActive = pageName === item.url;
         const linkClass = isActive 
-          ? "flex items-center gap-3 px-3 py-2.5 rounded-md text-white bg-[#0a466b] border-l-4 border-teal font-medium transition-colors"
-          : "flex items-center gap-3 px-3 py-2.5 rounded-md text-[#b3c5d0] hover:text-white hover:bg-[#063352] transition-colors" + (item.disabled ? " opacity-50 cursor-not-allowed pointer-events-none" : "");
+          ? "flex items-center justify-between px-3 py-2.5 rounded-md text-white bg-[#0a466b] font-medium transition-colors"
+          : "flex items-center justify-between px-3 py-2.5 rounded-md text-[#b3c5d0] hover:text-white hover:bg-[#063352] transition-colors" + (item.disabled ? " opacity-50 cursor-not-allowed pointer-events-none" : "");
         
         return `
           <a href="${item.disabled ? '#' : item.url}" class="${linkClass} group relative">
-            <i data-lucide="${item.icon}" class="w-5 h-5 ${isActive ? 'text-teal' : 'text-[#8ba2b1] group-hover:text-white'}"></i>
-            <span class="text-sm">${item.name}</span>
-            ${item.disabled ? '<i data-lucide="lock" class="w-3 h-3 absolute right-3 text-[#5b7383]"></i>' : ''}
+            <div class="flex items-center gap-3">
+              <i data-lucide="${item.icon}" class="w-5 h-5 ${isActive ? 'text-teal' : 'text-[#8ba2b1] group-hover:text-white'}"></i>
+              <span class="text-sm">${item.name}</span>
+            </div>
+            ${isActive ? '<span class="w-2 h-2 bg-teal rounded-full shadow-[0_0_8px_#00bfb3] shrink-0 mr-1"></span>' : ''}
+            ${item.disabled ? '<i data-lucide="lock" class="w-3 h-3 text-[#5b7383] shrink-0"></i>' : ''}
           </a>
         `;
       }
@@ -95,8 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="w-64 bg-[#023e63] flex flex-col justify-between shrink-0 border-r border-[#e5e5e5] h-full text-[#b3c5d0]">
       <div>
         <!-- Brand Header -->
-        <div class="h-16 flex items-center justify-center border-b border-[#0f4e75] px-4">
-          <img src="logo/hh-logo-white.svg" alt="H-Intelligence" class="h-12 w-auto">
+        <div class="h-28 flex items-center justify-center border-b border-[#0f4e75] px-4 py-4">
+          <img src="logo/hh-logo-white.svg" alt="H-Intelligence" class="h-24 w-auto">
         </div>
 
         <!-- Nav Links -->
