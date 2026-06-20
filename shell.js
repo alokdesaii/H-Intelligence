@@ -95,8 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="w-64 bg-[#023e63] flex flex-col justify-between shrink-0 border-r border-[#e5e5e5] h-full text-[#b3c5d0]">
       <div>
         <!-- Brand Header -->
-        <div class="h-16 flex items-center px-6 border-b border-[#0f4e75]">
-          <img src="logo/hh-logo-white.svg" alt="H-Intelligence" class="h-10 w-auto">
+        <div class="h-16 flex items-center justify-center border-b border-[#0f4e75] px-4">
+          <img src="logo/hh-logo-white.svg" alt="H-Intelligence" class="h-12 w-auto">
         </div>
 
         <!-- Nav Links -->
