@@ -25,7 +25,6 @@ admin-shell.js
 design.md
 
 # Exclude other customer portal pages from public repo (local only)
-screening-setup.html
 bulk-screening.html
 ongoing-monitoring.html
 case-management.html
@@ -33,3 +32,4 @@ profile-manager.html
 reports.html
 search-results.html
 match-profiler.html
+.vercel
